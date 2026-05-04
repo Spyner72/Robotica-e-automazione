@@ -1,0 +1,280 @@
+📄 index.html (versione COMPLETA con immagini)
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Robotica e Automazione — Tesina</title>
+    <meta name="description" content="Tesina su Robotica e Automazione: storia, fabbriche, medicina, Arduino e futuro." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <nav class="nav" id="nav">
+        <div class="nav__inner">
+            <a href="#hero" class="nav__logo">
+                <span class="nav__logo-mark">◣</span>
+                <span class="nav__logo-text">ROBOTICA<span class="accent">.</span>AUTOMAZIONE</span>
+            </a>
+            <ul class="nav__links">
+                <li><a href="#storia" class="nav__link">Storia</a></li>
+                <li><a href="#fabbriche" class="nav__link">Fabbriche</a></li>
+                <li><a href="#medicina" class="nav__link">Medicina</a></li>
+                <li><a href="#arduino" class="nav__link">Arduino</a></li>
+                <li><a href="#futuro" class="nav__link">Futuro</a></li>
+            </ul>
+            <button class="nav__toggle" id="navToggle" aria-label="Apri menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero" id="hero">
+        <div class="hero__bg"><div class="hero__grid"></div></div>
+        <div class="container">
+            <div class="hero__meta">
+                <span class="tag">// TESINA · A.S. 2025/2026</span>
+                <span class="tag tag--mono">CAP_00</span>
+            </div>
+            <h1 class="hero__title">
+                <span class="hero__line">Robotica</span>
+                <span class="hero__line hero__line--out">&amp; Automazione</span>
+            </h1>
+            <p class="hero__lead">
+                Dalle prime catene di montaggio agli androidi che camminano. Un viaggio attraverso le macchine
+                che hanno cambiato — e cambieranno — il modo in cui lavoriamo, ci curiamo e viviamo.
+            </p>
+            <div class="hero__cta">
+                <a href="#storia" class="btn btn--primary">
+                    <span>Inizia la lettura</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+                <a href="#arduino" class="btn btn--ghost"><span>Vai alla demo Arduino</span></a>
+            </div>
+            <div class="hero__stats">
+                <div class="stat">
+                    <div class="stat__num" data-count="3500000">0</div>
+                    <div class="stat__label">Robot industriali attivi nel mondo</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__num" data-count="1961">0</div>
+                    <div class="stat__label">Anno del primo robot industriale</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__num" data-count="76">0</div>
+                    <div class="stat__label">% di automazione nell'auto moderna</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero__scroll">
+            <span>SCROLL</span>
+            <div class="hero__scroll-line"></div>
+        </div>
+    </header>
+
+    <section class="section section--alt" id="storia">
+        <div class="container">
+            <div class="section__head">
+                <span class="section__num">01</span>
+                <span class="section__kicker">Le origini</span>
+                <h2 class="section__title">Una storia che inizia molto prima dei computer.</h2>
+            </div>
+            <div class="timeline">
+                <article class="tl-item">
+                    <div class="tl-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Leonardo-Robot3.jpg/640px-Leonardo-Robot3.jpg" alt="Cavaliere meccanico di Leonardo" loading="lazy" /></div>
+                    <div class="tl-body">
+                        <div class="tl-year">1495</div>
+                        <h3 class="tl-title">Il cavaliere di Leonardo</h3>
+                        <p>Leonardo da Vinci progetta un automa meccanico in armatura, capace di muovere braccia, collo e mascella tramite ingranaggi. È il primo "robot umanoide" della storia.</p>
+                    </div>
+                </article>
+                <article class="tl-item">
+                    <div class="tl-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Capek_RUR.jpg/640px-Capek_RUR.jpg" alt="R.U.R. di Karel Čapek" loading="lazy" /></div>
+                    <div class="tl-body">
+                        <div class="tl-year">1921</div>
+                        <h3 class="tl-title">Nasce la parola "robot"</h3>
+                        <p>Lo scrittore ceco Karel Čapek usa per la prima volta il termine <em>robot</em> nell'opera teatrale <em>R.U.R.</em>. Deriva dalla parola slava <strong>robota</strong>, che significa "lavoro pesante".</p>
+                    </div>
+                </article>
+                <article class="tl-item">
+                    <div class="tl-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Isaac.Asimov01.jpg/480px-Isaac.Asimov01.jpg" alt="Isaac Asimov" loading="lazy" /></div>
+                    <div class="tl-body">
+                        <div class="tl-year">1942</div>
+                        <h3 class="tl-title">Le tre leggi di Asimov</h3>
+                        <p>Lo scrittore Isaac Asimov formula le celebri <strong>Tre Leggi della Robotica</strong>: principi etici che ancora oggi guidano il dibattito sulle macchine intelligenti.</p>
+                    </div>
+                </article>
+                <article class="tl-item">
+                    <div class="tl-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Factory_Automation_Robotics_Palettizing_Bread.jpg/640px-Factory_Automation_Robotics_Palettizing_Bread.jpg" alt="Robot industriale" loading="lazy" /></div>
+                    <div class="tl-body">
+                        <div class="tl-year">1961</div>
+                        <h3 class="tl-title">Unimate, il primo robot industriale</h3>
+                        <p>Installato nello stabilimento General Motors del New Jersey, <strong>Unimate</strong> svolge operazioni pericolose come la pressofusione. È l'inizio dell'era dell'automazione moderna.</p>
+                    </div>
+                </article>
+                <article class="tl-item">
+                    <div class="tl-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Honda_ASIMO_%28ver._2011%29_2011_Tokyo_Motor_Show.jpg/640px-Honda_ASIMO_%28ver._2011%29_2011_Tokyo_Motor_Show.jpg" alt="ASIMO Honda" loading="lazy" /></div>
+                    <div class="tl-body">
+                        <div class="tl-year">2000</div>
+                        <h3 class="tl-title">ASIMO di Honda</h3>
+                        <p>Honda presenta ASIMO, il robot umanoide capace di camminare, salire le scale e riconoscere volti e voci. Diventa il simbolo della robotica del nuovo millennio.</p>
+                    </div>
+                </article>
+                <article class="tl-item">
+                    <div class="tl-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Atlas_from_boston_dynamics.jpg/640px-Atlas_from_boston_dynamics.jpg" alt="Atlas Boston Dynamics" loading="lazy" /></div>
+                    <div class="tl-body">
+                        <div class="tl-year">2024+</div>
+                        <h3 class="tl-title">L'era dei robot AI</h3>
+                        <p>Boston Dynamics, Tesla, Figure AI e altri stanno sviluppando robot umanoidi alimentati da intelligenza artificiale generativa, capaci di apprendere come gli esseri umani.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="fabbriche">
+        <div class="container">
+            <div class="section__head">
+                <span class="section__num">02</span>
+                <span class="section__kicker">Industria 4.0</span>
+                <h2 class="section__title">I robot hanno trasformato il lavoro nelle fabbriche.</h2>
+            </div>
+            <div class="split">
+                <div class="split__text">
+                    <p class="lead">L'<strong>automazione industriale</strong> è l'uso di sistemi automatici — robot, sensori, software — per controllare e ottimizzare i processi produttivi. Oggi una moderna linea di produzione automobilistica è automatizzata fino al <strong>76%</strong>.</p>
+                    <p>I robot nelle fabbriche svolgono compiti <em>pericolosi, ripetitivi o estremamente precisi</em>: saldatura, verniciatura, montaggio, controllo qualità. Lavorano 24 ore su 24, non si stancano e mantengono una precisione costante.</p>
+                    <p>Con l'avvento dell'<strong>Industria 4.0</strong> sono arrivati i <em>cobot</em> (robot collaborativi): macchine progettate per lavorare a fianco degli operai umani in completa sicurezza, grazie a sensori che ne fermano il movimento al minimo contatto.</p>
+                </div>
+                <div class="split__visual">
+                    <div class="card-stack">
+                        <div class="info-card"><div class="info-card__icon">⚙</div><h4>Robot Articolati</h4><p>Bracci robotici a 6 assi usati per saldatura e assemblaggio. I più diffusi in assoluto.</p></div>
+                        <div class="info-card"><div class="info-card__icon">▦</div><h4>AGV &amp; AMR</h4><p>Veicoli autonomi che spostano materiali nei magazzini. Amazon ne ha più di 750.000.</p></div>
+                        <div class="info-card"><div class="info-card__icon">◈</div><h4>Cobot</h4><p>Robot collaborativi pensati per lavorare a fianco degli operai senza barriere fisiche.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="callout">
+                <div class="callout__label">CASO STUDIO</div>
+                <h3 class="callout__title">FANUC — la fabbrica che si auto-replica</h3>
+                <p>L'azienda giapponese FANUC ha uno stabilimento in cui <strong>i robot costruiscono altri robot</strong>, senza bisogno di luce: i bracci robotici lavorano nel buio, perché non hanno occhi. La produzione non si ferma mai, nemmeno di notte o nei festivi. È uno dei più chiari esempi di "fabbrica intelligente".</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section--alt" id="medicina">
+        <div class="container">
+            <div class="section__head">
+                <span class="section__num">03</span>
+                <span class="section__kicker">Robotica medicale</span>
+                <h2 class="section__title">Quando la precisione di un robot salva vite.</h2>
+            </div>
+            <p class="section__lead">Nella sala operatoria un tremore di mezzo millimetro può fare la differenza. È qui che entra in gioco la <strong>chirurgia robotica</strong>: macchine che amplificano e stabilizzano i movimenti del chirurgo, rendendo possibili operazioni un tempo impensabili.</p>
+            <div class="med-grid">
+                <article class="med-card"><div class="med-card__num">01</div><h3>Da Vinci Surgical System</h3><p>Il sistema robotico chirurgico più diffuso al mondo. Il chirurgo controlla quattro bracci robotici da una console: i movimenti vengono filtrati dal tremore e scalati con altissima precisione. Usato per oltre <strong>10 milioni</strong> di operazioni.</p></article>
+                <article class="med-card"><div class="med-card__num">02</div><h3>Protesi bioniche</h3><p>Mani e gambe artificiali controllate dai segnali nervosi. Riconoscono l'intenzione di muoversi e possono restituire al paziente un senso del tatto attraverso sensori e stimolazione elettrica.</p></article>
+                <article class="med-card"><div class="med-card__num">03</div><h3>Microbot &amp; Nanobot</h3><p>Robot millimetrici (e perfino più piccoli) capaci di muoversi all'interno del corpo umano per rilasciare farmaci in punti specifici, eliminare trombi o eseguire biopsie senza chirurgia invasiva.</p></article>
+                <article class="med-card"><div class="med-card__num">04</div><h3>Esoscheletri</h3><p>Strutture robotiche indossabili che aiutano pazienti con paralisi a tornare a camminare e sostengono fisioterapisti e infermieri nel sollevamento dei pazienti, prevenendo infortuni.</p></article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section--accent" id="arduino">
+        <div class="container">
+            <div class="section__head">
+                <span class="section__num">04</span>
+                <span class="section__kicker">Hands-on</span>
+                <h2 class="section__title">Arduino — il robot lo costruisci tu.</h2>
+            </div>
+            <div class="arduino-intro">
+                <p class="lead"><strong>Arduino</strong> è una piccola scheda elettronica programmabile nata in Italia nel 2005 presso l'Interaction Design Institute di Ivrea. È il punto di partenza ideale per chiunque voglia avvicinarsi al mondo dell'<em>automazione</em> e della <em>robotica fai-da-te</em>: economica, open source e con una community gigantesca.</p>
+            </div>
+            <div class="arduino-grid">
+                <div class="arduino-spec"><div class="arduino-spec__label">Microcontrollore</div><div class="arduino-spec__value">ATmega328P</div></div>
+                <div class="arduino-spec"><div class="arduino-spec__label">Tensione operativa</div><div class="arduino-spec__value">5 V</div></div>
+                <div class="arduino-spec"><div class="arduino-spec__label">Pin digitali</div><div class="arduino-spec__value">14</div></div>
+                <div class="arduino-spec"><div class="arduino-spec__label">Pin analogici</div><div class="arduino-spec__value">6</div></div>
+                <div class="arduino-spec"><div class="arduino-spec__label">Memoria Flash</div><div class="arduino-spec__value">32 KB</div></div>
+                <div class="arduino-spec"><div class="arduino-spec__label">Frequenza CPU</div><div class="arduino-spec__value">16 MHz</div></div>
+            </div>
+            <div class="arduino-demo">
+                <div class="arduino-demo__head">
+                    <div class="arduino-demo__title"><span class="dot"></span><span>DEMO INTERATTIVA — Blink LED</span></div>
+                    <button class="btn btn--primary btn--sm" id="blinkToggle"><span id="blinkLabel">Avvia</span></button>
+                </div>
+                <div class="arduino-demo__body">
+                    <div class="arduino-board">
+                        <div class="arduino-board__chip">ATmega328P</div>
+                        <div class="arduino-board__pins">
+                            <div class="pin"></div><div class="pin"></div><div class="pin"></div>
+                            <div class="pin pin--active"></div>
+                            <div class="pin"></div><div class="pin"></div><div class="pin"></div>
+                        </div>
+                        <div class="arduino-board__led" id="led">
+                            <div class="arduino-board__led-glow"></div>
+                            <span>LED · PIN 13</span>
+                        </div>
+                        <div class="arduino-board__label">ARDUINO UNO</div>
+                    </div>
+                    <pre class="code"><code><span class="c-cm">// Esempio classico: fai lampeggiare un LED</span>
+<span class="c-kw">void</span> <span class="c-fn">setup</span>() {
+  <span class="c-fn">pinMode</span>(13, <span class="c-cn">OUTPUT</span>); <span class="c-cm">// pin 13 come uscita</span>
+}
+
+<span class="c-kw">void</span> <span class="c-fn">loop</span>() {
+  <span class="c-fn">digitalWrite</span>(13, <span class="c-cn">HIGH</span>); <span class="c-cm">// accendi il LED</span>
+  <span class="c-fn">delay</span>(500);              <span class="c-cm">// aspetta mezzo secondo</span>
+  <span class="c-fn">digitalWrite</span>(13, <span class="c-cn">LOW</span>);  <span class="c-cm">// spegni il LED</span>
+  <span class="c-fn">delay</span>(500);              <span class="c-cm">// aspetta mezzo secondo</span>
+}</code></pre>
+                </div>
+            </div>
+            <div class="arduino-uses">
+                <h3 class="arduino-uses__title">Cosa puoi costruire con Arduino?</h3>
+                <div class="chips">
+                    <span class="chip">Sensori temperatura</span><span class="chip">Bracci robotici</span><span class="chip">Domotica</span><span class="chip">Robot mobili</span><span class="chip">Stazioni meteo</span><span class="chip">Antifurti</span><span class="chip">Stampanti 3D</span><span class="chip">Droni</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="futuro">
+        <div class="container">
+            <div class="section__head">
+                <span class="section__num">05</span>
+                <span class="section__kicker">Domani</span>
+                <h2 class="section__title">Cosa succederà nei prossimi 10 anni?</h2>
+            </div>
+            <div class="future">
+                <div class="future__col"><div class="future__year">2026</div><h3>Robot umanoidi nelle fabbriche</h3><p>Tesla Optimus, Figure 02 e Apptronik Apollo iniziano la produzione in serie per uso industriale: trasporto materiali e operazioni di assemblaggio.</p></div>
+                <div class="future__col"><div class="future__year">2028</div><h3>AI generale + robotica</h3><p>Modelli di intelligenza artificiale sempre più potenti permettono ai robot di apprendere nuovi compiti guardando un umano farli, senza bisogno di essere riprogrammati.</p></div>
+                <div class="future__col"><div class="future__year">2030</div><h3>Robot domestici</h3><p>I primi robot domestici realmente utili entrano nelle case: piegano i vestiti, cucinano e tengono compagnia agli anziani. Costo previsto: come un'utilitaria.</p></div>
+                <div class="future__col"><div class="future__year">2035</div><h3>Spazio &amp; esplorazione</h3><p>Robot autonomi costruiscono basi sulla Luna e su Marte prima dell'arrivo dell'uomo. La robotica diventa il braccio operativo dell'esplorazione spaziale.</p></div>
+            </div>
+            <div class="quote">
+                <div class="quote__mark">"</div>
+                <p>La domanda non è più <em>se</em> i robot ci sostituiranno in alcuni lavori, ma <em>come</em> impareremo a lavorare insieme a loro.</p>
+                <span class="quote__author">— Riflessione conclusiva</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand"><span class="nav__logo-mark">◣</span><span>ROBOTICA<span class="accent">.</span>AUTOMAZIONE</span></div>
+                <p class="footer__note">Tesina di fine anno — Robotica e Automazione</p>
+            </div>
+            <div class="footer__bottom">
+                <span>© 2025/2026 — Tesina scolastica</span>
+                <span class="mono">// END_OF_FILE</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

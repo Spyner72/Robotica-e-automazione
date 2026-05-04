@@ -1,0 +1,406 @@
+
+:root {
+    --bg: #0a0a0a;
+    --bg-alt: #111111;
+    --bg-elev: #161616;
+    --line: #1f1f1f;
+    --line-strong: #2a2a2a;
+    --text: #ededed;
+    --text-dim: #9a9a9a;
+    --text-mute: #6b6b6b;
+    --accent: #c5f542;
+    --accent-warm: #ff7847;
+    --accent-soft: rgba(197, 245, 66, 0.12);
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --container: 1200px;
+    --radius: 4px;
+    --t: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    font-weight: 400;
+}
+
+::selection { background: var(--accent); color: var(--bg); }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.grain {
+    position: fixed; inset: 0; pointer-events: none; z-index: 1;
+    opacity: 0.06; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' /%3E%3C/svg%3E");
+}
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+.accent { color: var(--accent); }
+.mono { font-family: var(--font-mono); font-size: 0.85em; letter-spacing: -0.02em; }
+
+/* NAV */
+.nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--t), background var(--t);
+}
+.nav.is-scrolled { border-bottom-color: var(--line); background: rgba(10, 10, 10, 0.92); }
+.nav__inner {
+    max-width: var(--container); margin: 0 auto; padding: 18px 32px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.nav__logo {
+    font-family: var(--font-display); font-weight: 600; font-size: 14px;
+    letter-spacing: 0.08em; display: flex; align-items: center; gap: 10px;
+}
+.nav__logo-mark { color: var(--accent); font-size: 18px; transition: transform 0.6s ease; }
+.nav__logo:hover .nav__logo-mark { transform: rotate(180deg); }
+.nav__links { list-style: none; display: flex; align-items: center; gap: 36px; }
+.nav__link {
+    font-family: var(--font-mono); font-size: 12px; color: var(--text-dim);
+    letter-spacing: 0.04em; transition: color var(--t); position: relative;
+}
+.nav__link::before { content: '→ '; opacity: 0; margin-right: 0; transition: all var(--t); }
+.nav__link:hover { color: var(--accent); }
+.nav__link:hover::before { opacity: 1; margin-right: 4px; }
+.nav__toggle { display: none; background: none; border: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+.nav__toggle span { display: block; width: 22px; height: 1.5px; background: var(--text); transition: all var(--t); }
+
+/* HERO */
+.hero {
+    min-height: 100vh; padding: 140px 0 80px; position: relative;
+    overflow: hidden; display: flex; flex-direction: column; justify-content: center;
+}
+.hero__bg { position: absolute; inset: 0; z-index: 0; }
+.hero__grid {
+    position: absolute; inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 80%);
+}
+.hero__bg::before {
+    content: ''; position: absolute; top: 30%; right: -10%; width: 600px; height: 600px;
+    background: radial-gradient(circle, var(--accent-soft), transparent 60%); filter: blur(40px);
+}
+.hero__meta { display: flex; gap: 16px; align-items: center; margin-bottom: 48px; opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards; }
+.tag {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+    color: var(--text-mute); padding: 6px 12px; border: 1px solid var(--line-strong); border-radius: 100px;
+}
+.tag--mono { background: var(--bg-elev); color: var(--accent); border-color: var(--accent-soft); }
+.hero__title {
+    font-family: var(--font-display); font-weight: 500;
+    font-size: clamp(48px, 9vw, 132px); line-height: 0.95;
+    letter-spacing: -0.04em; margin-bottom: 40px;
+}
+.hero__line { display: block; overflow: hidden; opacity: 0; transform: translateY(60px); animation: fadeUp 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+.hero__line:nth-child(1) { animation-delay: 0.2s; }
+.hero__line:nth-child(2) { animation-delay: 0.35s; }
+.hero__line--out { color: var(--text-dim); font-style: italic; font-weight: 400; padding-left: 12vw; }
+.hero__lead { max-width: 580px; font-size: clamp(16px, 1.4vw, 19px); color: var(--text-dim); margin-bottom: 48px; opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards; }
+.hero__cta { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 96px; opacity: 0; animation: fadeUp 0.8s ease 0.8s forwards; }
+
+.btn {
+    display: inline-flex; align-items: center; gap: 10px; padding: 16px 28px;
+    font-family: var(--font-display); font-weight: 500; font-size: 14px;
+    letter-spacing: 0.02em; border-radius: 100px; cursor: pointer;
+    border: 1px solid transparent; transition: all var(--t); background: transparent; color: var(--text);
+}
+.btn--sm { padding: 10px 20px; font-size: 12px; }
+.btn--primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.btn--primary:hover { background: transparent; color: var(--accent); transform: translateY(-2px); }
+.btn--ghost { border-color: var(--line-strong); color: var(--text-dim); }
+.btn--ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+.hero__stats {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    border-top: 1px solid var(--line); padding-top: 48px;
+    opacity: 0; animation: fadeUp 0.8s ease 1s forwards;
+}
+.stat__num {
+    font-family: var(--font-display); font-size: clamp(28px, 4vw, 48px);
+    font-weight: 500; letter-spacing: -0.02em; color: var(--accent); margin-bottom: 8px;
+}
+.stat__label { font-size: 13px; color: var(--text-mute); max-width: 220px; }
+
+.hero__scroll {
+    position: absolute; bottom: 40px; right: 32px;
+    display: flex; align-items: center; gap: 16px;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; color: var(--text-mute); z-index: 3;
+}
+.hero__scroll-line { width: 60px; height: 1px; background: linear-gradient(to right, var(--text-mute), transparent); position: relative; overflow: hidden; }
+.hero__scroll-line::after { content: ''; position: absolute; width: 20px; height: 1px; background: var(--accent); animation: scrollLine 2s ease infinite; }
+
+@keyframes scrollLine { 0% { left: -20px; } 100% { left: 60px; } }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+/* SECTIONS */
+.section { padding: 120px 0; position: relative; border-top: 1px solid var(--line); }
+.section--alt { background: var(--bg-alt); }
+.section--accent { background: linear-gradient(180deg, var(--bg) 0%, #0d0d0d 100%); border-top-color: var(--accent-soft); }
+.section__head { margin-bottom: 80px; max-width: 800px; }
+.section__num { font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: 0.15em; display: inline-block; margin-right: 16px; }
+.section__kicker { font-family: var(--font-mono); font-size: 12px; color: var(--text-mute); letter-spacing: 0.15em; text-transform: uppercase; }
+.section__title { font-family: var(--font-display); font-weight: 500; font-size: clamp(32px, 5vw, 64px); line-height: 1.05; letter-spacing: -0.03em; margin-top: 24px; }
+.section__lead { font-size: 19px; color: var(--text-dim); max-width: 720px; margin-bottom: 64px; }
+.lead { font-size: 18px; color: var(--text); margin-bottom: 20px; }
+
+/* TIMELINE */
+.timeline { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.tl-item { padding: 40px 48px; background: var(--bg-alt); display: grid; grid-template-columns: 140px 1fr; gap: 32px; align-items: start; transition: background var(--t); position: relative; }
+.tl-item:hover { background: var(--bg-elev); }
+.tl-item:hover .tl-year { color: var(--accent); }
+.tl-year { font-family: var(--font-display); font-size: 32px; font-weight: 500; color: var(--text-dim); letter-spacing: -0.02em; transition: color var(--t); }
+.tl-title { font-family: var(--font-display); font-size: 24px; font-weight: 500; margin-bottom: 12px; letter-spacing: -0.01em; }
+.tl-item p { color: var(--text-dim); font-size: 16px; max-width: 700px; }
+.tl-item strong { color: var(--text); font-weight: 500; }
+
+/* FABBRICHE */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-bottom: 80px; }
+.split__text p { color: var(--text-dim); margin-bottom: 24px; }
+.split__text strong { color: var(--text); }
+.card-stack { display: flex; flex-direction: column; gap: 16px; }
+.info-card { padding: 32px; background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius); transition: all var(--t); position: relative; overflow: hidden; }
+.info-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--accent); transform: scaleY(0); transform-origin: top; transition: transform var(--t); }
+.info-card:hover { transform: translateX(8px); border-color: var(--line-strong); }
+.info-card:hover::before { transform: scaleY(1); }
+.info-card__icon { font-size: 32px; color: var(--accent); margin-bottom: 16px; line-height: 1; }
+.info-card h4 { font-family: var(--font-display); font-size: 20px; font-weight: 500; margin-bottom: 8px; }
+.info-card p { color: var(--text-dim); font-size: 14px; }
+
+.callout { border: 1px solid var(--line-strong); border-left: 3px solid var(--accent); padding: 40px 48px; background: var(--bg-elev); border-radius: var(--radius); }
+.callout__label { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.15em; margin-bottom: 12px; }
+.callout__title { font-family: var(--font-display); font-size: 28px; font-weight: 500; margin-bottom: 16px; letter-spacing: -0.02em; }
+.callout p { color: var(--text-dim); max-width: 800px; }
+.callout strong { color: var(--text); }
+
+/* MEDICINA */
+.med-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.med-card { padding: 48px 40px; background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius); transition: all var(--t); position: relative; }
+.med-card:hover { border-color: var(--accent-soft); transform: translateY(-4px); }
+.med-card__num { font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: 0.15em; margin-bottom: 24px; }
+.med-card h3 { font-family: var(--font-display); font-size: 24px; font-weight: 500; margin-bottom: 16px; letter-spacing: -0.01em; }
+.med-card p { color: var(--text-dim); font-size: 15px; }
+.med-card strong { color: var(--text); }
+
+/* ARDUINO */
+.arduino-intro { max-width: 800px; margin-bottom: 64px; }
+.arduino-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-bottom: 64px; }
+.arduino-spec { padding: 24px 20px; background: var(--bg-alt); }
+.arduino-spec__label { font-family: var(--font-mono); font-size: 10px; color: var(--text-mute); letter-spacing: 0.1em; margin-bottom: 8px; text-transform: uppercase; }
+.arduino-spec__value { font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--accent); letter-spacing: -0.01em; }
+
+.arduino-demo { border: 1px solid var(--line-strong); border-radius: var(--radius); overflow: hidden; background: var(--bg-elev); margin-bottom: 64px; }
+.arduino-demo__head { padding: 20px 32px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--bg-alt); }
+.arduino-demo__title { font-family: var(--font-mono); font-size: 12px; color: var(--text-dim); letter-spacing: 0.1em; display: flex; align-items: center; gap: 12px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); animation: pulse 1.6s ease infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+.arduino-demo__body { display: grid; grid-template-columns: 320px 1fr; gap: 0; }
+.arduino-board {
+    padding: 40px 32px; position: relative; border-right: 1px solid var(--line);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 24px; min-height: 400px;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(197, 245, 66, 0.06), transparent 50%),
+        repeating-linear-gradient(45deg, #0a1f3a, #0a1f3a 2px, #0d2a4a 2px, #0d2a4a 8px);
+}
+.arduino-board__chip { background: #0a0a0a; border: 1px solid #2a4a7a; padding: 12px 20px; font-family: var(--font-mono); font-size: 11px; color: #7ab8ff; border-radius: 2px; letter-spacing: 0.1em; }
+.arduino-board__pins { display: flex; gap: 6px; }
+.pin { width: 12px; height: 12px; background: #c9a045; border-radius: 50%; border: 1px solid #8a6e30; transition: all var(--t); }
+.pin--active { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 8px var(--accent); }
+.arduino-board__led { display: flex; flex-direction: column; align-items: center; gap: 8px; position: relative; }
+.arduino-board__led-glow { width: 28px; height: 28px; border-radius: 50%; background: #3a3a3a; border: 2px solid #1a1a1a; transition: all 0.15s ease; position: relative; }
+.arduino-board__led.is-on .arduino-board__led-glow { background: var(--accent); box-shadow: 0 0 30px var(--accent), 0 0 8px #fff; }
+.arduino-board__led span { font-family: var(--font-mono); font-size: 9px; color: #7ab8ff; letter-spacing: 0.1em; }
+.arduino-board__label { font-family: var(--font-display); font-weight: 600; font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 0.3em; margin-top: 12px; }
+
+.code { background: #0a0a0a; padding: 32px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.8; color: #e0e0e0; }
+.c-cm { color: #6a8a5e; font-style: italic; }
+.c-kw { color: #c586c0; }
+.c-fn { color: #dcdcaa; }
+.c-cn { color: #c5f542; }
+
+.arduino-uses__title { font-family: var(--font-display); font-size: 20px; font-weight: 500; color: var(--text-dim); margin-bottom: 24px; text-align: center; }
+.chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.chip { padding: 10px 20px; border: 1px solid var(--line-strong); border-radius: 100px; font-family: var(--font-mono); font-size: 12px; color: var(--text-dim); transition: all var(--t); cursor: default; }
+.chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+/* FUTURO */
+.future { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 80px; }
+.future__col { padding: 48px 32px; border-right: 1px solid var(--line); transition: background var(--t); }
+.future__col:last-child { border-right: none; }
+.future__col:hover { background: var(--bg-alt); }
+.future__year { font-family: var(--font-display); font-size: 56px; font-weight: 500; color: var(--accent); letter-spacing: -0.03em; margin-bottom: 32px; line-height: 1; }
+.future__col h3 { font-family: var(--font-display); font-size: 18px; font-weight: 500; margin-bottom: 16px; letter-spacing: -0.01em; }
+.future__col p { color: var(--text-dim); font-size: 14px; }
+
+.quote { max-width: 900px; margin: 0 auto; text-align: center; position: relative; padding: 64px 32px; }
+.quote__mark { font-family: var(--font-display); font-size: 120px; line-height: 1; color: var(--accent); margin-bottom: -32px; height: 64px; }
+.quote p { font-family: var(--font-display); font-size: clamp(22px, 3vw, 36px); line-height: 1.3; font-weight: 400; letter-spacing: -0.02em; margin-bottom: 32px; }
+.quote em { color: var(--accent); font-style: italic; }
+.quote__author { font-family: var(--font-mono); font-size: 12px; color: var(--text-mute); letter-spacing: 0.1em; }
+
+/* FOOTER */
+.footer { padding: 64px 0 32px; border-top: 1px solid var(--line); background: var(--bg-alt); }
+.footer__top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 32px; border-bottom: 1px solid var(--line); margin-bottom: 32px; flex-wrap: wrap; gap: 16px; }
+.footer__brand { font-family: var(--font-display); font-weight: 600; font-size: 14px; letter-spacing: 0.08em; display: flex; align-items: center; gap: 10px; }
+.footer__note { color: var(--text-mute); font-size: 14px; }
+.footer__bottom { display: flex; justify-content: space-between; align-items: center; color: var(--text-mute); font-size: 12px; flex-wrap: wrap; gap: 12px; }
+
+/* RESPONSIVE */
+@media (max-width: 968px) {
+    .nav__links { display: none; }
+    .nav__toggle { display: flex; }
+    .nav.is-open .nav__links { display: flex; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg); flex-direction: column; padding: 32px; gap: 24px; border-bottom: 1px solid var(--line); }
+    .hero__line--out { padding-left: 0; }
+    .hero__stats { grid-template-columns: 1fr; gap: 32px; }
+    .split { grid-template-columns: 1fr; gap: 48px; }
+    .med-grid { grid-template-columns: 1fr; }
+    .arduino-grid { grid-template-columns: repeat(2, 1fr); }
+    .arduino-demo__body { grid-template-columns: 1fr; }
+    .arduino-board { border-right: none; border-bottom: 1px solid var(--line); min-height: 320px; }
+    .future { grid-template-columns: repeat(2, 1fr); }
+    .future__col:nth-child(2n) { border-right: none; }
+    .future__col:nth-child(1), .future__col:nth-child(2) { border-bottom: 1px solid var(--line); }
+    .tl-item { grid-template-columns: 1fr; gap: 12px; padding: 32px 24px; }
+    .container { padding: 0 20px; }
+    .section { padding: 80px 0; }
+    .hero__scroll { display: none; }
+    .callout { padding: 32px 24px; }
+}
+@media (max-width: 560px) {
+    .arduino-grid { grid-template-columns: 1fr; }
+    .future { grid-template-columns: 1fr; }
+    .future__col { border-right: none !important; border-bottom: 1px solid var(--line); }
+    .hero__title { font-size: 56px; }
+    .arduino-demo__head { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+
+🔧 Passaggio 1 — Sostituisci la sezione Storia in index.html
+Apri index.html, cerca il blocco che inizia con <section class="section section--alt" id="storia"> e finisce con il </section> corrispondente, e sostituiscilo tutto con questo:
+
+    <section class="section section--alt" id="storia">
+        <div class="container">
+            <div class="section__head">
+                <span class="section__num">01</span>
+                <span class="section__kicker">Le origini</span>
+                <h2 class="section__title">Una storia che inizia molto prima dei computer.</h2>
+            </div>
+
+            <div class="timeline">
+                <article class="tl-item">
+                    <div class="tl-img">
+                        <img src="i"alt="Ricostruzione del cavaliere meccanico di Leonardo da Vinci" loading="lazy" />
+                    </div>
+                    <div class="tl-body">
+                        <div class="tl-year">1495</div>
+                        <h3 class="tl-title">Il cavaliere di Leonardo</h3>
+                        <p>Leonardo da Vinci progetta un automa meccanico in armatura, capace di muovere braccia, collo e mascella tramite ingranaggi. È il primo "robot umanoide" della storia.</p>
+                    </div>
+                </article>
+
+                <article class="tl-item">
+                    <div class="tl-img">
+                        <img src="im" alt="Scena dall'opera R.U.R. di Karel Čapek" loading="lazy" />
+                    </div>
+                    <div class="tl-body">
+                        <div class="tl-year">1921</div>
+                        <h3 class="tl-title">Nasce la parola "robot"</h3>
+                        <p>Lo scrittore ceco Karel Čapek usa per la prima volta il termine <em>robot</em> nell'opera teatrale <em>R.U.R.</em>. Deriva dalla parola slava <strong>robota</strong>, che significa "lavoro pesante".</p>
+                    </div>
+                </article>
+
+                <article class="tl-item">
+                    <div class="tl-img">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Isaac.Asimov01.jpg/480px-Isaac.Asimov01.jpg" alt="Lo scrittore Isaac Asimov" loading="lazy" />
+                    </div>
+                    <div class="tl-body">
+                        <div class="tl-year">1942</div>
+                        <h3 class="tl-title">Le tre leggi di Asimov</h3>
+                        <p>Lo scrittore Isaac Asimov formula le celebri <strong>Tre Leggi della Robotica</strong>: principi etici che ancora oggi guidano il dibattito sulle macchine intelligenti.</p>
+                    </div>
+                </article>
+
+                <article class="tl-item">
+                    <div class="tl-img">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Factory_Automation_Robotics_Palettizing_Bread.jpg/640px-Factory_Automation_Robotics_Palettizing_Bread.jpg" alt="Robot industriale al lavoro su una linea di produzione" loading="lazy" />
+                    </div>
+                    <div class="tl-body">
+                        <div class="tl-year">1961</div>
+                        <h3 class="tl-title">Unimate, il primo robot industriale</h3>
+                        <p>Installato nello stabilimento General Motors del New Jersey, <strong>Unimate</strong> svolge operazioni pericolose come la pressofusione. È l'inizio dell'era dell'automazione moderna.</p>
+                    </div>
+                </article>
+
+                <article class="tl-item">
+                    <div class="tl-img">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Honda_ASIMO_%28ver._2011%29_2011_Tokyo_Motor_Show.jpg/640px-Honda_ASIMO_%28ver._2011%29_2011_Tokyo_Motor_Show.jpg" alt="Il robot umanoide ASIMO di Honda" loading="lazy" />
+                    </div>
+                    <div class="tl-body">
+                        <div class="tl-year">2000</div>
+                        <h3 class="tl-title">ASIMO di Honda</h3>
+                        <p>Honda presenta ASIMO, il robot umanoide capace di camminare, salire le scale e riconoscere volti e voci. Diventa il simbolo della robotica del nuovo millennio.</p>
+                    </div>
+                </article>
+
+                <article class="tl-item">
+                    <div class="tl-img">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Atlas_from_boston_dynamics.jpg/640px-Atlas_from_boston_dynamics.jpg" alt="Atlas, il robot umanoide di Boston Dynamics" loading="lazy" />
+                    </div>
+                    <div class="tl-body">
+                        <div class="tl-year">2024+</div>
+                        <h3 class="tl-title">L'era dei robot AI</h3>
+                        <p>Boston Dynamics, Tesla, Figure AI e altri stanno sviluppando robot umanoidi alimentati da intelligenza artificiale generativa, capaci di apprendere come gli esseri umani.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+ 
+
+
+
+.tl-item {
+    grid-template-columns: 220px 140px 1fr;
+    align-items: center;
+    gap: 32px;
+    padding: 24px 32px;
+}
+.tl-img {
+    width: 220px; height: 150px; overflow: hidden;
+    border-radius: var(--radius); background: var(--bg-elev);
+    border: 1px solid var(--line); position: relative;
+}
+.tl-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(20%) brightness(0.92);
+    transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.tl-item:hover .tl-img img { filter: grayscale(0%) brightness(1.05); transform: scale(1.06); }
+.tl-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, transparent 60%, rgba(197, 245, 66, 0.08)); pointer-events: none; }
+.tl-body { min-width: 0; }
+@media (max-width: 968px) {
+    .tl-item { grid-template-columns: 1fr; gap: 16px; padding: 24px; }
+    .tl-img { width: 100%; height: 200px; }
+}
