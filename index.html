@@ -1,11 +1,11 @@
-📄 index.html (versione COMPLETA con immagini)
+
+📄 index.html (versione completa con la tua immagine)
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Robotica e Automazione — Tesina</title>
-    <meta name="description" content="Tesina su Robotica e Automazione: storia, fabbriche, medicina, Arduino e futuro." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -27,9 +27,7 @@
                 <li><a href="#arduino" class="nav__link">Arduino</a></li>
                 <li><a href="#futuro" class="nav__link">Futuro</a></li>
             </ul>
-            <button class="nav__toggle" id="navToggle" aria-label="Apri menu">
-                <span></span><span></span><span></span>
-            </button>
+            <button class="nav__toggle" id="navToggle" aria-label="Apri menu"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
@@ -44,36 +42,18 @@
                 <span class="hero__line">Robotica</span>
                 <span class="hero__line hero__line--out">&amp; Automazione</span>
             </h1>
-            <p class="hero__lead">
-                Dalle prime catene di montaggio agli androidi che camminano. Un viaggio attraverso le macchine
-                che hanno cambiato — e cambieranno — il modo in cui lavoriamo, ci curiamo e viviamo.
-            </p>
+            <p class="hero__lead">Dalle prime catene di montaggio agli androidi che camminano. Un viaggio attraverso le macchine che hanno cambiato — e cambieranno — il modo in cui lavoriamo, ci curiamo e viviamo.</p>
             <div class="hero__cta">
-                <a href="#storia" class="btn btn--primary">
-                    <span>Inizia la lettura</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                </a>
+                <a href="#storia" class="btn btn--primary"><span>Inizia la lettura</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
                 <a href="#arduino" class="btn btn--ghost"><span>Vai alla demo Arduino</span></a>
             </div>
             <div class="hero__stats">
-                <div class="stat">
-                    <div class="stat__num" data-count="3500000">0</div>
-                    <div class="stat__label">Robot industriali attivi nel mondo</div>
-                </div>
-                <div class="stat">
-                    <div class="stat__num" data-count="1961">0</div>
-                    <div class="stat__label">Anno del primo robot industriale</div>
-                </div>
-                <div class="stat">
-                    <div class="stat__num" data-count="76">0</div>
-                    <div class="stat__label">% di automazione nell'auto moderna</div>
-                </div>
+                <div class="stat"><div class="stat__num" data-count="3500000">0</div><div class="stat__label">Robot industriali attivi nel mondo</div></div>
+                <div class="stat"><div class="stat__num" data-count="1961">0</div><div class="stat__label">Anno del primo robot industriale</div></div>
+                <div class="stat"><div class="stat__num" data-count="76">0</div><div class="stat__label">% di automazione nell'auto moderna</div></div>
             </div>
         </div>
-        <div class="hero__scroll">
-            <span>SCROLL</span>
-            <div class="hero__scroll-line"></div>
-        </div>
+        <div class="hero__scroll"><span>SCROLL</span><div class="hero__scroll-line"></div></div>
     </header>
 
     <section class="section section--alt" id="storia">
@@ -85,7 +65,7 @@
             </div>
             <div class="timeline">
                 <article class="tl-item">
-                    <div class="tl-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Leonardo-Robot3.jpg/640px-Leonardo-Robot3.jpg" alt="Cavaliere meccanico di Leonardo" loading="lazy" /></div>
+                    <div class="tl-img tl-img--contain"><img src="https://customer-assets.emergentagent.com/job_thesis-builder-35/artifacts/gez90vqr_Cavaliere_di_Leonardo-removebg-preview.png" alt="Cavaliere meccanico di Leonardo" loading="lazy" /></div>
                     <div class="tl-body">
                         <div class="tl-year">1495</div>
                         <h3 class="tl-title">Il cavaliere di Leonardo</h3>
@@ -93,7 +73,7 @@
                     </div>
                 </article>
                 <article class="tl-item">
-                    <div class="tl-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Capek_RUR.jpg/640px-Capek_RUR.jpg" alt="R.U.R. di Karel Čapek" loading="lazy" /></div>
+                    <div class="tl-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Capek_RUR.jpg/640px-Capek_RUR.jpg" alt="R.U.R." loading="lazy" /></div>
                     <div class="tl-body">
                         <div class="tl-year">1921</div>
                         <h3 class="tl-title">Nasce la parola "robot"</h3>
@@ -226,9 +206,9 @@
 
 <span class="c-kw">void</span> <span class="c-fn">loop</span>() {
   <span class="c-fn">digitalWrite</span>(13, <span class="c-cn">HIGH</span>); <span class="c-cm">// accendi il LED</span>
-  <span class="c-fn">delay</span>(500);              <span class="c-cm">// aspetta mezzo secondo</span>
-  <span class="c-fn">digitalWrite</span>(13, <span class="c-cn">LOW</span>);  <span class="c-cm">// spegni il LED</span>
-  <span class="c-fn">delay</span>(500);              <span class="c-cm">// aspetta mezzo secondo</span>
+  <span class="c-fn">delay</span>(500);
+  <span class="c-fn">digitalWrite</span>(13, <span class="c-cn">LOW</span>);
+  <span class="c-fn">delay</span>(500);
 }</code></pre>
                 </div>
             </div>
